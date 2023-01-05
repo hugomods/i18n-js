@@ -53,7 +53,7 @@ The format is a string, which can be formatted with [Context](#context).
 
 ### Context
 
-The context is a name-value pairs, the name should be wrapped by curly brackets.
+The context is a name-value pairs, the name should be wrapped by curly brackets in the formats.
 
 ```typescript
 Record<string, number | string>
