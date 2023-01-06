@@ -6,7 +6,7 @@ export default class Translator {
     constructor(private translations: Translations, private fallback: Language) {
     }
 
-    private getLang() {
+    private getLang(): string {
         if (this.lang === '') {
             this.lang = document.documentElement.getAttribute('lang') ?? this.fallback
         }
@@ -14,13 +14,17 @@ export default class Translator {
         return this.lang
     }
 
-    translate(key: string, ctx?: Context): string {
-        const lang = this.getLang()
-        if (!(lang in this.translations) || !(key in this.translations[lang])) {
-            return ''
-        }
+    private getTranslations() {
+        return this.translations[this.getLang()]
+    }
 
-        const translation = this.translations[lang][key]
+    private getFallbackTranslation(key: string) {
+        return this.translations[this.fallback][key] ?? ''
+    }
+
+    translate(key: string, ctx?: Context): string {
+        const translations = this.getTranslations()
+        const translation = translations[key] ?? this.getFallbackTranslation(key)
 
         if (!ctx) {
             return translation.other
