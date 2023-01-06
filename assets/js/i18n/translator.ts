@@ -15,7 +15,8 @@ export default class Translator {
     }
 
     private getTranslations() {
-        return this.translations[this.getLang()]
+        const lang = this.getLang()
+        return lang in this.translations ? this.translations[this.getLang()] : this.translations[this.fallback]
     }
 
     private getFallbackTranslation(key: string) {
