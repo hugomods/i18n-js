@@ -9,10 +9,18 @@ However we may want to render the some HTML blocks in JS way in some cases.
 Imagine there is a JS component requires a Modal to be rendered on pages.
 
 ```html
-<div class="my-modal">...</div>
+<div class="my-modal">
+    <div class="my-modal-header">{{ ii18n "my_modal_title" }}</div>
+    <div class="my-modal-body">
+      ...
+    </div>
+    <div class="my-modal-footer"></div>
+</div>
 ```
 
-The modal markup will be part of every single HTML pages with using Hugo templates, which increase all HTML files size. It would be better if render in JS way, since only the file size of JS will be increased. So this module comes up, to be used to handle the i18n part in JS.
+The modal markup will be part of every single HTML pages with using Hugo templates, which increase all HTML files size. 
+
+It would be better if render in JS way, since only the file size of JS will be increased. So this module comes up, to be used to handle the i18n part in JS.
 
 ## How it works?
 
