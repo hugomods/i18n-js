@@ -39,21 +39,25 @@ The translations is an object that mapping from language to a set of [translatio
 
 ### Translation
 
+A translation is an object that mapping from `key` to their formats.
+
 ```typescript
-{
-    one?: string,
-    other: string,
-}
+Record<string, {
+    one?: string;
+    other: string;
+}>
 ```
+
+A translation can have one or two formats as following.
 
 - `one`: signalize format, optional.
 - `other`: pluralize format.
 
-The format is a string, which can be formatted with [Context](#context).
+The format is a string, which can be formatted with [Context](#context), you'll need to wrap the parameter/placeholder by curly brackets, i.e., `Hello {name}`.
 
 ### Context
 
-The context is a name-value pairs, the name should be wrapped by curly brackets in the formats.
+The context is a name-value pairs.
 
 ```typescript
 Record<string, number | string>
