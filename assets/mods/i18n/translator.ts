@@ -23,9 +23,13 @@ export default class Translator {
         return this.translations[this.fallback][key] ?? ''
     }
 
-    translate(key: string, ctx?: Context): string {
+    translate(key: string, ctx?: Context, fallback = ''): string {
         const translations = this.getTranslations()
         const translation = translations[key] ?? this.getFallbackTranslation(key)
+
+        if (!translation) {
+            return fallback === '' ? key : fallback
+        }
 
         if (!ctx) {
             return translation.other
