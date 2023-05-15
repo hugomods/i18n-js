@@ -16,17 +16,25 @@ export default class Translator {
 
     private getTranslations() {
         const lang = this.getLang()
-        return lang in this.translations ? this.translations[this.getLang()] : this.translations[this.fallback]
+        return this.translations[lang] ?? this.getFallbackTranslations()
+    }
+    
+    private getFallbackTranslations() {
+        return this.translations[this.fallback]
     }
 
     private getFallbackTranslation(key: string) {
-        return this.translations[this.fallback][key] ?? ''
+        const translations = this.getFallbackTranslations()
+        return translations[key] ?? ''
     }
 
     translate(key: string, ctx?: Context, fallback = ''): string {
         const translations = this.getTranslations()
-        const translation = translations[key] ?? this.getFallbackTranslation(key)
+        if (!translations) {
+            return fallback === '' ? key : fallback
+        }
 
+        const translation = translations[key] ?? this.getFallbackTranslation(key)
         if (!translation) {
             return fallback === '' ? key : fallback
         }
