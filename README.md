@@ -5,4 +5,4 @@
 [![License](https://img.shields.io/github/license/hugomods/i18n-js?style=flat-square)](https://github.com/hugomods/i18n-js/blob/main/LICENSE)
 [![Version](https://img.shields.io/github/v/tag/hugomods/i18n-js?label=version&style=flat-square)](https://github.com/hugomods/i18n-js/tags)
 
-A super simple and lightweight i18n JS module for Hugo. Read more on the [documentations](https://hugomods.com/en/docs/i18n-js/).
+A super simple and lightweight i18n JS module for Hugo. Read more on the [documentation](https://hugomods.com/en/docs/i18n-js/).
